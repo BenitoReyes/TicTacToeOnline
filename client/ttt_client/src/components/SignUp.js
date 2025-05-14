@@ -8,9 +8,8 @@ function SignUp() {
         // This function will handle the sign-up logic
     }
     return (
-        <div classname ="SignUp">
+        <div classname ="signUp">
         <label>Sign Up</label>
-        <h1>Sign Up</h1>
             <input placeholder="First Name" onChange={(event) => {
                 setUser({ ...user, firstName: event.target.value });
             }} />  
