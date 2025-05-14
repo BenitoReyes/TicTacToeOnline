@@ -10,8 +10,8 @@
 
 # production
 /build
-#environment 
-streamSec.env
+# Ignore environment files
+server/src/streamSec.env
 # misc
 .DS_Store
 .env.local
