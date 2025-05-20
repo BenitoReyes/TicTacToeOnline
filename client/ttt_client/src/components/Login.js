@@ -6,7 +6,7 @@ function Login() {
         // This function will handle the login logic
     }
     return (
-        <div classname ="login">
+        <div className ="login">
         <label>Login</label>
             
             <input placeholder="Username" onChange={(event) => {
