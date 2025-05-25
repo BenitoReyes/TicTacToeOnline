@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import Axios from "axios";
 import Cookies from "universal-cookie";
-function SignUp() {
+function SignUp({setIsAuth}) {
     /*making user an object and setting it to null initially and then setting it to 
     the value of the input as its going because of the event listener on onChange*/
     const [user, setUser] = useState(null);
@@ -16,6 +16,7 @@ function SignUp() {
             cookies.set("lastName", lastName);
             cookies.set("username", username);
             cookies.set("hashedPassword", hashedPassword);
+            setIsAuth(true);
         })
         
     }

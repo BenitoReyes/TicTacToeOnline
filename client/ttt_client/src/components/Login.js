@@ -1,9 +1,22 @@
 import React from "react";
-function Login() {
-    const [user, setUsername] = React.useState(null);
-    const [password, setPassword] = React.useState(null);
+import { useState } from "react";
+import Axios from "axios";
+import Cookies from "universal-cookie";
+function Login({setIsAuth}) {
+    const [username, setUsername] = React.useState("");
+    const [password, setPassword] = React.useState("");
+    const cookies = new Cookies();
     const login = () => {
-        // This function will handle the login logic
+
+        Axios.post("http://localhost:3001/login", { username, password }).then(res => {
+            const { token, firstName, lastName, username, userId } = res.data;
+            cookies.set("token", token);
+            cookies.set("userId", userId);
+            cookies.set("firstName", firstName);
+            cookies.set("lastName", lastName);
+            cookies.set("username", username);
+            setIsAuth(true);
+        })
     }
     return (
         <div className ="login">
