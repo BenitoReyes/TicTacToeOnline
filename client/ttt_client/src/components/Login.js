@@ -7,8 +7,11 @@ function Login({setIsAuth}) {
     const [password, setPassword] = React.useState("");
     const cookies = new Cookies();
     const login = () => {
-
         Axios.post("http://localhost:3001/login", { username, password }).then(res => {
+            if (res.data.error) {
+                alert(res.data.error);
+                return;
+            }
             const { token, firstName, lastName, username, userId } = res.data;
             cookies.set("token", token);
             cookies.set("userId", userId);
@@ -16,7 +19,7 @@ function Login({setIsAuth}) {
             cookies.set("lastName", lastName);
             cookies.set("username", username);
             setIsAuth(true);
-        })
+        });
     }
     return (
         <div className ="login">

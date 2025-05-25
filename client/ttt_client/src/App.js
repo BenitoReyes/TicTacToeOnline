@@ -1,7 +1,9 @@
 import './App.css';
 import SignUp from './components/SignUp.js';
 import Login from './components/Login.js';
+import JoinGame from './components/JoinGame.js';
 import { StreamChat } from 'stream-chat';
+import {Chat} from 'stream-chat-react';
 import Cookies from 'universal-cookie';
 import Axios from 'axios';
 import { useState, useEffect } from 'react';
@@ -63,10 +65,16 @@ function App() {
   // Remove duplicate connectUser call outside of useEffect
   return (
     <div className="App">
-      {isAuth ? (<button onClick={logOut}>Log out</button>) : (<>
-      <SignUp setIsAuth={setIsAuth}/>
-      <Login setIsAuth={setIsAuth}/>
-      </>
+      {isAuth && client ? (
+        <Chat client={client}>
+        <JoinGame/>
+        <button onClick={logOut}>Log out</button>
+        </Chat> 
+        ) : (
+        <>
+        <SignUp setIsAuth={setIsAuth}/>
+        <Login setIsAuth={setIsAuth}/>
+        </>
       )}
     </div>
   );
