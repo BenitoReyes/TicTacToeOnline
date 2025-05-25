@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Board from './Board'
 function Game({ channel }) {
   const [playersJoined, setPlayersJoined] = React.useState(channel.state.watcher_count === 2);
     channel.on("user.watching.start", (event) => {

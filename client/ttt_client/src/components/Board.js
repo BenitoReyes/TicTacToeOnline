@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Square from './Square';
 function Board() {
     const [board, setBoard] = useState("","","","","","","","","");
   return (
